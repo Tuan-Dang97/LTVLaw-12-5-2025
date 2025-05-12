@@ -4,7 +4,7 @@ import path from "path";
 
 export default defineConfig({
     // Đường dẫn gốc khi deploy (gh-pages cần đúng path)
-    base: "/LTVLaw",
+    base: process.env.NODE_ENV === "production" ? "/LTVLaw-12-5-2025" : "/",
 
     // Thư mục chính chứa HTML, SCSS, JS
     root: "src",
