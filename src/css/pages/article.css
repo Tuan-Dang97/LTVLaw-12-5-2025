@@ -1,0 +1,387 @@
+/* CSS dành cho trang bài viết */
+
+/* Banner trang bài viết */
+.article-banner {
+    background-color: #f5f5f5;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.article-banner h1 {
+    font-size: 32px;
+    color: #1e73be;
+    margin-bottom: 15px;
+}
+
+.breadcrumbs {
+    color: #666;
+    font-size: 14px;
+}
+
+.breadcrumbs a {
+    color: #1e73be;
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+/* Container bài viết */
+.article-container {
+    padding: 60px 0;
+}
+
+.article-grid {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+/* Nội dung bài viết */
+.article-content {
+    background: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    border-radius: 5px;
+}
+
+.article-meta {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #777;
+}
+
+.article-meta span {
+    margin-right: 20px;
+}
+
+.article-meta i {
+    margin-right: 5px;
+}
+
+/* Intro */
+.article-intro {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+/* Nội dung chính */
+.article-text {
+    line-height: 1.8;
+}
+
+.article-text h2 {
+    font-size: 24px;
+    color: #1e73be;
+    margin: 30px 0 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.article-text p {
+    margin-bottom: 20px;
+}
+
+.article-text ul, 
+.article-text ol {
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.article-text li {
+    margin-bottom: 10px;
+}
+
+.article-text img {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+.article-text blockquote {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-left: 3px solid #1e73be;
+    margin: 20px 0;
+    font-style: italic;
+}
+
+/* Footer bài viết */
+.article-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.article-tags a {
+    display: inline-block;
+    margin-right: 5px;
+    padding: 5px 10px;
+    background-color: #f1f1f1;
+    color: #666;
+    border-radius: 3px;
+    font-size: 12px;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.article-tags a:hover {
+    background-color: #1e73be;
+    color: #fff;
+}
+
+.article-tags span,
+.article-share span {
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.article-share a {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #f1f1f1;
+    color: #666;
+    border-radius: 50%;
+    margin-left: 5px;
+    transition: all 0.3s;
+}
+
+.article-share a:hover {
+    background-color: #1e73be;
+    color: #fff;
+}
+
+/* Sidebar */
+.article-sidebar {
+    position: sticky;
+    top: 30px;
+}
+
+.sidebar-widget {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    padding: 20px;
+}
+
+.sidebar-widget h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    color: #1e73be;
+}
+
+/* Mục lục */
+.article-toc ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.article-toc li {
+    margin-bottom: 8px;
+}
+
+.article-toc a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.article-toc a:hover {
+    color: #1e73be;
+}
+
+/* Menu bài viết */
+.article-menu-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.article-menu-list li {
+    margin-bottom: 10px;
+}
+
+.article-menu-list a {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    padding: 5px 0;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.article-menu-list a:hover,
+.article-menu-list a.active {
+    color: #1e73be;
+    font-weight: 600;
+}
+
+.article-menu-list a.active {
+    border-left: 3px solid #1e73be;
+    padding-left: 10px;
+    margin-left: -10px;
+}
+
+.article-menu-list ul {
+    list-style-type: none;
+    padding-left: 15px;
+    margin-top: 5px;
+}
+
+.article-menu-list ul li {
+    margin-bottom: 5px;
+}
+
+.article-menu-list ul a {
+    font-size: 13px;
+}
+
+/* Bài viết liên quan trong sidebar */
+.widget-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.widget-post {
+    overflow: hidden;
+}
+
+.widget-post a {
+    display: flex;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.widget-post img {
+    width: 70px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.widget-post h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+    transition: color 0.3s;
+}
+
+.widget-post a:hover h4 {
+    color: #1e73be;
+}
+
+/* Bài viết mới nhất dạng list */
+.latest-posts-simple {
+    margin-top: 40px;
+    border-top: 1px solid #eee;
+    padding-top: 30px;
+}
+
+.latest-posts-simple h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #1e73be;
+}
+
+.latest-posts-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.latest-posts-list li {
+    border-bottom: 1px solid #eee;
+    padding: 12px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.latest-posts-list li:last-child {
+    border-bottom: none;
+}
+
+.latest-posts-list a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+    flex: 1;
+}
+
+.latest-posts-list a:hover {
+    color: #1e73be;
+}
+
+.latest-posts-list .post-date {
+    color: #888;
+    font-size: 13px;
+    margin-left: 15px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .article-grid {
+        grid-template-columns: 2fr 1fr;
+    }
+    
+    .latest-posts-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .article-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .article-sidebar {
+        position: static;
+    }
+    
+    .latest-posts-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .article-banner h1 {
+        font-size: 28px;
+    }
+    
+    .article-content {
+        padding: 20px;
+    }
+    
+    .article-footer {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .article-banner h1 {
+        font-size: 24px;
+    }
+    
+    .article-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .article-text h2 {
+        font-size: 20px;
+    }
+}
