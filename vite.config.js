@@ -26,6 +26,7 @@ export default defineConfig({
                 blog: path.resolve(__dirname, "src/blog.html"),
                 client: path.resolve(__dirname, "src/client-stores.html"),
                 recruitment: path.resolve(__dirname, "src/recruitment.html"),
+
                 // Thêm trang khác nếu có
             },
         },
