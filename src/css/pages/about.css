@@ -1,12 +1,94 @@
-/* CSS cho trang "Về chúng tôi" */
+/* ===================================
+   CSS cho trang "Về chúng tôi"
+   =================================== */
 
-/* Banner giới thiệu */
+/* ===================================
+   1. GLOBAL STYLES & LAYOUT
+   =================================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===================================
+   2. SECTION TITLES (Tái sử dụng)
+   =================================== */
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1e73be;
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.section-title h2::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(135deg, #1e73be, #23a9d8);
+    border-radius: 2px;
+}
+
+.section-title p {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.title-separator {
+    height: 3px;
+    width: 50px;
+    background-color: #1e73be;
+    margin: 0 auto;
+}
+
+.content-divider {
+    height: 2px;
+    width: 50px;
+    background-color: #fff;
+    margin-bottom: 30px;
+}
+
+/* ===================================
+   3. BANNER GIỚI THIỆU
+   =================================== */
 .about-banner {
-    background: linear-gradient(135deg, #1e73be 0%, #23a9d8 70%, #3a63dd 100%);
+    background-image: url(/img/about-us/lawyers-picture.jpg);
+    background-size: contain;
+    background-position: center;
     color: #fff;
     padding: 80px 0;
     position: relative;
     overflow: hidden;
+}
+
+.about-banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #1e73be 0%, #23a9d8 70%, #3a63dd 100%);
+    opacity: 0.85;
+    z-index: 1;
+}
+
+.about-banner > * {
+    position: relative;
+    z-index: 2;
 }
 
 .about-header {
@@ -34,13 +116,6 @@
     position: relative;
 }
 
-.content-divider {
-    height: 2px;
-    width: 50px;
-    background-color: #fff;
-    margin-bottom: 30px;
-}
-
 .overview-text p,
 .about-text p {
     font-size: 16px;
@@ -49,6 +124,7 @@
     color: rgba(255, 255, 255, 0.9);
 }
 
+/* Buttons trong banner */
 .about-buttons {
     display: flex;
     gap: 20px;
@@ -72,29 +148,12 @@
     color: #1e73be;
 }
 
-/* Lịch sử công ty */
+/* ===================================
+   4. LỊCH SỬ CÔNG TY
+   =================================== */
 .company-history {
     padding: 80px 0;
     background-color: #f9f9f9;
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.section-title h2 {
-    font-size: 32px;
-    color: #1e73be;
-    font-weight: 700;
-    margin-bottom: 15px;
-}
-
-.title-separator {
-    height: 3px;
-    width: 50px;
-    background-color: #1e73be;
-    margin: 0 auto;
 }
 
 .history-content {
@@ -117,7 +176,9 @@
     margin-bottom: 20px;
 }
 
-/* Giá trị cốt lõi */
+/* ===================================
+   5. GIÁ TRỊ CỐT LÕI
+   =================================== */
 .core-values {
     padding: 80px 0;
     background-color: #fff;
@@ -161,7 +222,9 @@
     line-height: 1.6;
 }
 
-/* Tầm nhìn và Sứ mệnh */
+/* ===================================
+   6. TẦM NHÌN VÀ SỨ MỆNH
+   =================================== */
 .vision-mission {
     padding: 80px 0;
     background-color: #f9f9f9;
@@ -200,73 +263,256 @@
     line-height: 1.7;
 }
 
-/* Responsive */
+/* ===================================
+   7. ĐỘI NGŨ CHUYÊN GIA
+   =================================== */
+.experts {
+    padding: 80px 0;
+    background-color: #f8f9fa;
+}
+
+.experts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 40px;
+    align-items: start;
+}
+
+.expert-item {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 300px;
+}
+
+.expert-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, #1e73be, #23a9d8);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.expert-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.expert-item:hover::before {
+    transform: scaleX(1);
+}
+
+/* Expert Image */
+.expert-image {
+    margin: 0 0 20px 0;
+    position: relative;
+}
+
+.expert-image img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #f0f0f0;
+    transition: all 0.3s ease;
+}
+
+.expert-item:hover .expert-image img {
+    border-color: #1e73be;
+    transform: scale(1.05);
+}
+
+/* Expert Info */
+.expert-item h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.expert-item p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+/* Expert Contact */
+.expert-contact {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.expert-contact a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #f8f9fa;
+    color: #1e73be;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.expert-contact a:hover {
+    background: #1e73be;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* ===================================
+   8. RESPONSIVE DESIGN
+   =================================== */
+
+/* Desktop lớn (1024px+) */
 @media (max-width: 1024px) {
     .about-content {
         gap: 40px;
     }
-    
+
     .values-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .experts-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
 }
 
+/* Tablet (768px - 992px) */
+@media (max-width: 992px) {
+    .experts-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+/* Tablet nhỏ (768px) */
 @media (max-width: 768px) {
+    /* Layout chính */
     .about-content {
         grid-template-columns: 1fr;
         gap: 40px;
     }
-    
+
     .history-content {
         grid-template-columns: 1fr;
     }
-    
+
     .history-image {
         order: -1;
     }
-    
+
     .vision-mission-wrapper {
         grid-template-columns: 1fr;
         gap: 30px;
     }
-    
+
+    /* Typography */
     .section-title h2 {
-        font-size: 28px;
+        font-size: 2rem;
     }
-    
+
     .about-header h1 {
         font-size: 36px;
     }
+
+    /* Experts section */
+    .experts {
+        padding: 60px 0;
+    }
+
+    .section-title {
+        margin-bottom: 40px;
+    }
+
+    .experts-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .expert-item {
+        padding: 25px 15px;
+    }
+
+    .expert-image img {
+        width: 100px;
+        height: 100px;
+    }
 }
 
+/* Mobile (576px) */
 @media (max-width: 576px) {
+    /* Grid layouts */
     .values-grid {
         grid-template-columns: 1fr;
     }
-    
+
+    /* Buttons */
     .about-buttons {
         flex-direction: column;
         gap: 15px;
     }
-    
+
     .btn-brochure,
     .btn-gts {
         text-align: center;
     }
-    
+
+    /* Spacing */
     .about-banner {
         padding: 60px 0;
     }
-    
+
     .about-header {
         margin-bottom: 40px;
     }
-    
+
     .section-title {
         margin-bottom: 40px;
     }
-    
+
+    /* Typography */
     .about-header h1 {
         font-size: 32px;
+    }
+}
+
+/* Mobile nhỏ (480px) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .section-title h2 {
+        font-size: 1.8rem;
+    }
+
+    .section-title p {
+        font-size: 1rem;
+    }
+
+    .expert-contact a {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
     }
 }

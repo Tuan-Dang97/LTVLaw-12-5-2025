@@ -89,7 +89,7 @@ ul {
 }
 
 .logo img {
-    height: 50px;
+    height: 70px;
 }
 
 /* Main Navigation */
@@ -938,11 +938,11 @@ ul {
 
     .logo {
         margin: 0;
-        max-width: 70%;
+        max-width: 100%;
     }
 
     .logo img {
-        height: 40px;
+        height: 50px;
     }
 
     /* Mobile Navigation */

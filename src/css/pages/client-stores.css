@@ -4,10 +4,9 @@
 .client-banner {
     background-color: #1e73be;
     background-image: linear-gradient(
-            rgba(30, 115, 190, 0.9),
             rgba(30, 115, 190, 0.9)
         ),
-        url("../images/clients/client-banner.jpg");
+        url("/img/clientstore/cau-chuyen-thanh-cong.jpg");
     background-size: cover;
     background-position: center;
     color: #fff;
