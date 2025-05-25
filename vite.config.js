@@ -26,7 +26,10 @@ export default defineConfig({
                 blog: path.resolve(__dirname, "src/blog.html"),
                 client: path.resolve(__dirname, "src/client-stores.html"),
                 recruitment: path.resolve(__dirname, "src/recruitment.html"),
-
+                category: path.resolve(
+                    __dirname,
+                    "src/categories/bai-viet-moi.html"
+                ),
                 // Thêm trang khác nếu có
             },
         },

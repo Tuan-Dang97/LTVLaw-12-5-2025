@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Bài viết mới - Cập nhật những thông tin pháp luật và dịch vụ mới nhất"
+        />
+        <title>Bài viết mới - Luật LTV</title>
+        <%- include("./partials/head.ejs") %>
+        <link rel="stylesheet" href="/css/layout/style.css" />
+    </head>
+    <body>
+        <%- include("./partials/header.ejs") %>
+        
+        <main class="category-page">
+            <!-- Breadcrumb -->
+            <section class="breadcrumb">
+                <div class="container">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb-list">
+                            <li><a href="/">Trang chủ</a></li>
+                            <li><span>Bài viết mới</span></li>
+                        </ol>
+                    </nav>
+                </div>
+            </section>
+
+            <!-- Category Header -->
+            <section class="category-header">
+                <div class="container">
+                    <div class="category-hero">
+                        <h1>Bài viết mới</h1>
+                        <p class="category-description">
+                            Cập nhật liên tục những thông tin pháp luật mới nhất, 
+                            thay đổi trong quy định và các dịch vụ pháp lý hiện tại.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Articles -->
+            <section class="featured-section">
+                <div class="container">
+                    <h2 class="section-title">Bài viết mới nhất</h2>
+                    <div class="featured-grid" id="featured-articles">
+                        <!-- Sẽ được render bằng JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- All Articles Grid -->
+            <section class="articles-section">
+                <div class="container">
+                    <div class="articles-layout">
+                        <div class="articles-main">
+                            <div class="section-header-with-filter">
+                                <h2 class="section-title">Tất cả bài viết</h2>
+                                <div class="articles-filter">
+                                    <select id="sort-filter" class="filter-select">
+                                        <option value="newest">Mới nhất</option>
+                                        <option value="popular">Phổ biến</option>
+                                        <option value="oldest">Cũ nhất</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="articles-grid" id="articles-list">
+                                <!-- Sẽ được render bằng JavaScript -->
+                            </div>
+
+                            <!-- Pagination -->
+                            <div class="pagination" id="pagination">
+                                <!-- Sẽ được render bằng JavaScript -->
+                            </div>
+                        </div>
+
+                        <!-- Sidebar -->
+                        <aside class="articles-sidebar">
+                            <div class="sidebar-widget">
+                                <h3 class="widget-title">Chủ đề mới</h3>
+                                <ul class="related-topics">
+                                    <li><a href="#thay-doi-phap-luat">Thay đổi pháp luật 2025</a></li>
+                                    <li><a href="#dich-vu-moi">Dịch vụ mới</a></li>
+                                    <li><a href="#thu-tuc-don-gian">Thủ tục đơn giản hóa</a></li>
+                                    <li><a href="#cong-nghe-phap-ly">Công nghệ pháp lý</a></li>
+                                    <li><a href="#bao-cao-thang">Báo cáo hàng tháng</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="sidebar-widget">
+                                <h3 class="widget-title">Bài viết gần đây</h3>
+                                <div class="popular-posts" id="popular-posts">
+                                    <!-- Sẽ được render bằng JavaScript -->
+                                </div>
+                            </div>
+
+                            <div class="sidebar-widget timeline-widget">
+                                <h3 class="widget-title">Timeline cập nhật</h3>
+                                <div class="timeline-list" id="timeline-updates">
+                                    <!-- Sẽ được render bằng JavaScript -->
+                                </div>
+                            </div>
+
+                            <div class="sidebar-widget cta-widget">
+                                <h3 class="widget-title">Thông báo mới</h3>
+                                <p>Đăng ký để nhận thông báo về những bài viết và tin tức mới nhất.</p>
+                                <a href="/thong-bao" class="cta-button">Đăng ký</a>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <%- include("./partials/footer.ejs") %>
+        
+        <script src="../js/blog-manager.js"></script>
+        <script src="../js/category-manager.js"></script>
+        <script>
+            // Khởi tạo trang category
+            document.addEventListener('DOMContentLoaded', function() {
+                const categoryManager = new CategoryManager('bai-viet-moi');
+                categoryManager.init();
+                
+                // Tạo timeline updates
+                createTimelineUpdates();
+            });
+            
+            function createTimelineUpdates() {
+                const timelineContainer = document.getElementById('timeline-updates');
+                if (!timelineContainer) return;
+                
+                const updates = [
+                    { date: '25/05/2025', content: 'Cập nhật quy định mới về thuế môn bài' },
+                    { date: '24/05/2025', content: 'Hướng dẫn thành lập công ty online' },
+                    { date: '23/05/2025', content: 'Thay đổi trong luật doanh nghiệp' },
+                    { date: '22/05/2025', content: 'Quy trình đăng ký nhãn hiệu mới' }
+                ];
+                
+                const timelineHTML = updates.map(update => `
+                    <div class="timeline-item">
+                        <div class="timeline-date">${update.date}</div>
+                        <div class="timeline-content">${update.content}</div>
+                    </div>
+                `).join('');
+                
+                timelineContainer.innerHTML = timelineHTML;
+            }
+        </script>
+        
+        <style>
+            .timeline-widget {
+                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            }
+            
+            .timeline-list {
+                margin-top: 1rem;
+            }
+            
+            .timeline-item {
+                display: flex;
+                align-items: flex-start;
+                gap: 0.75rem;
+                margin-bottom: 1rem;
+                padding-bottom: 1rem;
+                border-bottom: 1px solid #dee2e6;
+            }
+            
+            .timeline-item:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            
+            .timeline-date {
+                font-size: 0.75rem;
+                color: #667eea;
+                font-weight: 600;
+                min-width: 70px;
+                background: white;
+                padding: 0.25rem 0.5rem;
+                border-radius: 4px;
+                text-align: center;
+            }
+            
+            .timeline-content {
+                font-size: 0.9rem;
+                line-height: 1.4;
+                color: #495057;
+                flex: 1;
+            }
+        </style>
+    </body>
+</html>

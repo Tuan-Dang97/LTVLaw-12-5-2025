@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Pháp luật sở hữu trí tuệ - Thông tin chi tiết về đăng ký nhãn hiệu, bản quyền tác giả và các vấn đề pháp lý liên quan"
+        />
+        <title>Pháp luật sở hữu trí tuệ - Luật LTV</title>
+        <%- include("../partials/head.ejs") %>
+        <link rel="stylesheet" href="../css/categories.css" />
+    </head>
+    <body>
+        <%- include("../partials/header.ejs") %>
+        
+        <main class="category-page">
+            <!-- Breadcrumb -->
+            <section class="breadcrumb">
+                <div class="container">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb-list">
+                            <li><a href="/">Trang chủ</a></li>
+                            <li><span>Pháp luật sở hữu trí tuệ</span></li>
+                        </ol>
+                    </nav>
+                </div>
+            </section>
+
+            <!-- Category Header -->
+            <section class="category-header">
+                <div class="container">
+                    <div class="category-hero">
+                        <h1>Pháp luật sở hữu trí tuệ</h1>
+                        <p class="category-description">
+                            Thông tin chuyên sâu về đăng ký nhãn hiệu, bản quyền tác giả, 
+                            bằng sáng chế và các vấn đề pháp lý liên quan đến sở hữu trí tuệ.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Articles -->
+            <section class="featured-section">
+                <div class="container">
+                    <h2 class="section-title">Bài viết nổi bật</h2>
+                    <div class="featured-grid" id="featured-articles">
+                        <!-- Sẽ được render bằng JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- All Articles Grid -->
+            <section class="articles-section">
+                <div class="container">
+                    <div class="articles-layout">
+                        <div class="articles-main">
+                            <div class="section-header-with-filter">
+                                <h2 class="section-title">Tất cả bài viết</h2>
+                                <div class="articles-filter">
+                                    <select id="sort-filter" class="filter-select">
+                                        <option value="newest">Mới nhất</option>
+                                        <option value="oldest">Cũ nhất</option>
+                                        <option value="popular">Phổ biến</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="articles-grid" id="articles-list">
+                                <!-- Sẽ được render bằng JavaScript -->
+                            </div>
+
+                            <!-- Pagination -->
+                            <div class="pagination" id="pagination">
+                                <!-- Sẽ được render bằng JavaScript -->
+                            </div>
+                        </div>
+
+                        <!-- Sidebar -->
+                        <aside class="articles-sidebar">
+                            <div class="sidebar-widget">
+                                <h3 class="widget-title">Chủ đề liên quan</h3>
+                                <ul class="related-topics">
+                                    <li><a href="#dang-ky-nhan-hieu">Đăng ký nhãn hiệu</a></li>
+                                    <li><a href="#ban-quyen-tac-gia">Bản quyền tác giả</a></li>
+                                    <li><a href="#bang-sang-che">Bằng sáng chế</a></li>
+                                    <li><a href="#kieu-dang-cong-nghiep">Kiểu dáng công nghiệp</a></li>
+                                    <li><a href="#chi-dan-dia-ly">Chỉ dẫn địa lý</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="sidebar-widget">
+                                <h3 class="widget-title">Bài viết xem nhiều</h3>
+                                <div class="popular-posts" id="popular-posts">
+                                    <!-- Sẽ được render bằng JavaScript -->
+                                </div>
+                            </div>
+
+                            <div class="sidebar-widget cta-widget">
+                                <h3 class="widget-title">Cần hỗ trợ?</h3>
+                                <p>Liên hệ với chúng tôi để được tư vấn miễn phí về các vấn đề sở hữu trí tuệ.</p>
+                                <a href="/lien-he" class="cta-button">Tư vấn ngay</a>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <%- include("../partials/footer.ejs") %>
+        
+        <script src="../js/blog-manager.js"></script>
+        <script src="../js/category-manager.js"></script>
+        <script>
+            // Khởi tạo trang category
+            document.addEventListener('DOMContentLoaded', function() {
+                const categoryManager = new CategoryManager('so-huu-tri-tue');
+                categoryManager.init();
+            });
+        </script>
+    </body>
+</html>
