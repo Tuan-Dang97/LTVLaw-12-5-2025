@@ -13,7 +13,7 @@
     </head>
     <body>
         <%- include("./partials/header.ejs") %>
-        
+
         <main class="category-page">
             <!-- Breadcrumb -->
             <section class="breadcrumb">
@@ -33,8 +33,9 @@
                     <div class="category-hero">
                         <h1>Bài viết mới</h1>
                         <p class="category-description">
-                            Cập nhật liên tục những thông tin pháp luật mới nhất, 
-                            thay đổi trong quy định và các dịch vụ pháp lý hiện tại.
+                            Cập nhật liên tục những thông tin pháp luật mới
+                            nhất, thay đổi trong quy định và các dịch vụ pháp lý
+                            hiện tại.
                         </p>
                     </div>
                 </div>
@@ -58,14 +59,19 @@
                             <div class="section-header-with-filter">
                                 <h2 class="section-title">Tất cả bài viết</h2>
                                 <div class="articles-filter">
-                                    <select id="sort-filter" class="filter-select">
+                                    <select
+                                        id="sort-filter"
+                                        class="filter-select"
+                                    >
                                         <option value="newest">Mới nhất</option>
-                                        <option value="popular">Phổ biến</option>
+                                        <option value="popular">
+                                            Phổ biến
+                                        </option>
                                         <option value="oldest">Cũ nhất</option>
                                     </select>
                                 </div>
                             </div>
-                            
+
                             <div class="articles-grid" id="articles-list">
                                 <!-- Sẽ được render bằng JavaScript -->
                             </div>
@@ -81,11 +87,29 @@
                             <div class="sidebar-widget">
                                 <h3 class="widget-title">Chủ đề mới</h3>
                                 <ul class="related-topics">
-                                    <li><a href="#thay-doi-phap-luat">Thay đổi pháp luật 2025</a></li>
-                                    <li><a href="#dich-vu-moi">Dịch vụ mới</a></li>
-                                    <li><a href="#thu-tuc-don-gian">Thủ tục đơn giản hóa</a></li>
-                                    <li><a href="#cong-nghe-phap-ly">Công nghệ pháp lý</a></li>
-                                    <li><a href="#bao-cao-thang">Báo cáo hàng tháng</a></li>
+                                    <li>
+                                        <a href="#thay-doi-phap-luat"
+                                            >Thay đổi pháp luật 2025</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a href="#dich-vu-moi">Dịch vụ mới</a>
+                                    </li>
+                                    <li>
+                                        <a href="#thu-tuc-don-gian"
+                                            >Thủ tục đơn giản hóa</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a href="#cong-nghe-phap-ly"
+                                            >Công nghệ pháp lý</a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a href="#bao-cao-thang"
+                                            >Báo cáo hàng tháng</a
+                                        >
+                                    </li>
                                 </ul>
                             </div>
 
@@ -98,15 +122,41 @@
 
                             <div class="sidebar-widget timeline-widget">
                                 <h3 class="widget-title">Timeline cập nhật</h3>
-                                <div class="timeline-list" id="timeline-updates">
+                                <div
+                                    class="timeline-list"
+                                    id="timeline-updates"
+                                >
                                     <!-- Sẽ được render bằng JavaScript -->
+                                </div>
+                            </div>
+
+                            <div class="sidebar-widget newsletter-widget">
+                                <h3 class="widget-title">📧 Newsletter</h3>
+                                <p>
+                                    Đăng ký để nhận bản tin về những thay đổi
+                                    pháp luật mới nhất.
+                                </p>
+                                <div class="newsletter-form">
+                                    <input
+                                        type="email"
+                                        placeholder="Email của bạn..."
+                                        class="newsletter-input"
+                                    />
+                                    <button class="newsletter-button">
+                                        Đăng ký
+                                    </button>
                                 </div>
                             </div>
 
                             <div class="sidebar-widget cta-widget">
                                 <h3 class="widget-title">Thông báo mới</h3>
-                                <p>Đăng ký để nhận thông báo về những bài viết và tin tức mới nhất.</p>
-                                <a href="/thong-bao" class="cta-button">Đăng ký</a>
+                                <p>
+                                    Đăng ký để nhận thông báo về những bài viết
+                                    và tin tức mới nhất.
+                                </p>
+                                <a href="/thong-bao" class="cta-button"
+                                    >Đăng ký</a
+                                >
                             </div>
                         </aside>
                     </div>
@@ -115,81 +165,503 @@
         </main>
 
         <%- include("./partials/footer.ejs") %>
-        
-        <script src="../js/blog-manager.js"></script>
-        <script src="../js/category-manager.js"></script>
+
+        <script src="/js/blog-manager.js"></script>
+        <script src="/js/category-manager.js"></script>
         <script>
             // Khởi tạo trang category
-            document.addEventListener('DOMContentLoaded', function() {
-                const categoryManager = new CategoryManager('bai-viet-moi');
+            document.addEventListener("DOMContentLoaded", function () {
+                const categoryManager = new CategoryManager("bai-viet-moi");
                 categoryManager.init();
-                
+
                 // Tạo timeline updates
                 createTimelineUpdates();
+
+                // Handle newsletter form
+                handleNewsletterForm();
             });
-            
+
             function createTimelineUpdates() {
-                const timelineContainer = document.getElementById('timeline-updates');
+                const timelineContainer =
+                    document.getElementById("timeline-updates");
                 if (!timelineContainer) return;
-                
+
                 const updates = [
-                    { date: '25/05/2025', content: 'Cập nhật quy định mới về thuế môn bài' },
-                    { date: '24/05/2025', content: 'Hướng dẫn thành lập công ty online' },
-                    { date: '23/05/2025', content: 'Thay đổi trong luật doanh nghiệp' },
-                    { date: '22/05/2025', content: 'Quy trình đăng ký nhãn hiệu mới' }
+                    {
+                        date: "25/05/2025",
+                        content: "Cập nhật quy định mới về thuế môn bài",
+                        type: "update",
+                    },
+                    {
+                        date: "24/05/2025",
+                        content: "Hướng dẫn thành lập công ty online",
+                        type: "guide",
+                    },
+                    {
+                        date: "23/05/2025",
+                        content: "Thay đổi trong luật doanh nghiệp",
+                        type: "law",
+                    },
+                    {
+                        date: "22/05/2025",
+                        content: "Quy trình đăng ký nhãn hiệu mới",
+                        type: "process",
+                    },
                 ];
-                
-                const timelineHTML = updates.map(update => `
+
+                const typeIcons = {
+                    update: "🔄",
+                    guide: "📖",
+                    law: "⚖️",
+                    process: "📋",
+                };
+
+                const timelineHTML = updates
+                    .map(
+                        (update) => `
                     <div class="timeline-item">
+                        <div class="timeline-icon">${
+                            typeIcons[update.type] || "📝"
+                        }</div>
                         <div class="timeline-date">${update.date}</div>
                         <div class="timeline-content">${update.content}</div>
                     </div>
-                `).join('');
-                
+                `
+                    )
+                    .join("");
+
                 timelineContainer.innerHTML = timelineHTML;
             }
-        </script>
-        
-        <style>
-            .timeline-widget {
-                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+
+            function handleNewsletterForm() {
+                const form = document.querySelector(".newsletter-form");
+                const input = document.querySelector(".newsletter-input");
+                const button = document.querySelector(".newsletter-button");
+
+                if (button && input) {
+                    button.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        const email = input.value.trim();
+
+                        if (!email) {
+                            alert("Vui lòng nhập email của bạn!");
+                            return;
+                        }
+
+                        if (!isValidEmail(email)) {
+                            alert("Email không hợp lệ!");
+                            return;
+                        }
+
+                        // Simulate newsletter subscription
+                        button.textContent = "Đang xử lý...";
+                        button.disabled = true;
+
+                        setTimeout(() => {
+                            alert("Cảm ơn bạn đã đăng ký newsletter!");
+                            input.value = "";
+                            button.textContent = "Đăng ký";
+                            button.disabled = false;
+                        }, 1500);
+                    });
+                }
             }
-            
+
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+        </script>
+
+        <style>
+            /* Category Page Styles */
+            .breadcrumb {
+                background-color: #f8f9fa;
+                padding: 1rem 0;
+                border-bottom: 1px solid #e9ecef;
+            }
+
+            .breadcrumb-list {
+                list-style: none;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                margin: 0;
+                padding: 0;
+                font-size: 0.9rem;
+            }
+
+            .breadcrumb-list li {
+                display: flex;
+                align-items: center;
+            }
+
+            .breadcrumb-list li:not(:last-child)::after {
+                content: "›";
+                margin-left: 0.5rem;
+                color: #6c757d;
+                font-weight: bold;
+            }
+
+            .breadcrumb-list a {
+                color: #007bff;
+                text-decoration: none;
+                transition: color 0.2s ease;
+            }
+
+            .breadcrumb-list a:hover {
+                color: #0056b3;
+                text-decoration: underline;
+            }
+
+            .breadcrumb-list span {
+                color: #6c757d;
+            }
+
+            .category-header {
+                background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+                color: white;
+                padding: 3rem 0;
+                text-align: center;
+            }
+
+            .category-hero h1 {
+                font-size: 2.5rem;
+                font-weight: 700;
+                margin-bottom: 1rem;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            .category-description {
+                font-size: 1.1rem;
+                max-width: 600px;
+                margin: 0 auto;
+                opacity: 0.9;
+                line-height: 1.6;
+            }
+
+            .featured-section {
+                padding: 4rem 0;
+                background-color: #f8f9fa;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                font-weight: 600;
+                color: #2c3e50;
+                margin-bottom: 2rem;
+                text-align: center;
+                position: relative;
+            }
+
+            .section-title::after {
+                content: "";
+                position: absolute;
+                bottom: -0.5rem;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 60px;
+                height: 3px;
+                background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+                border-radius: 2px;
+            }
+
+            .featured-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 2rem;
+                margin-top: 3rem;
+            }
+
+            .featured-card {
+                background: white;
+                border-radius: 12px;
+                overflow: hidden;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+                transition: all 0.3s ease;
+                cursor: pointer;
+            }
+
+            .featured-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            }
+
+            .articles-section {
+                padding: 4rem 0;
+            }
+
+            .articles-layout {
+                display: grid;
+                grid-template-columns: 1fr 300px;
+                gap: 3rem;
+            }
+
+            .section-header-with-filter {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 2rem;
+            }
+
+            .section-header-with-filter .section-title {
+                text-align: left;
+                margin-bottom: 0;
+            }
+
+            .section-header-with-filter .section-title::after {
+                left: 0;
+                transform: none;
+            }
+
+            .filter-select {
+                padding: 0.5rem 1rem;
+                border: 1px solid #dee2e6;
+                border-radius: 6px;
+                background-color: white;
+                font-size: 0.9rem;
+                cursor: pointer;
+                transition: border-color 0.2s ease;
+            }
+
+            .filter-select:hover,
+            .filter-select:focus {
+                border-color: #007bff;
+                outline: none;
+            }
+
+            .articles-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+            }
+
+            .article-card {
+                background: white;
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 2px 15px rgba(0, 0, 0, 0.06);
+                transition: all 0.3s ease;
+                cursor: pointer;
+            }
+
+            .article-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+            }
+
+            .articles-sidebar {
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .sidebar-widget {
+                background: white;
+                padding: 1.5rem;
+                border-radius: 10px;
+                box-shadow: 0 2px 15px rgba(0, 0, 0, 0.06);
+            }
+
+            .widget-title {
+                font-size: 1.2rem;
+                font-weight: 600;
+                color: #2c3e50;
+                margin-bottom: 1rem;
+                padding-bottom: 0.5rem;
+                border-bottom: 2px solid #e9ecef;
+            }
+
+            .related-topics {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .related-topics li {
+                margin-bottom: 0.75rem;
+            }
+
+            .related-topics a {
+                color: #495057;
+                text-decoration: none;
+                font-size: 0.95rem;
+                transition: color 0.2s ease;
+                display: block;
+                padding: 0.5rem 0;
+                border-bottom: 1px solid #f8f9fa;
+            }
+
+            .related-topics a:hover {
+                color: #007bff;
+                padding-left: 0.5rem;
+            }
+
+            .timeline-widget {
+                background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            }
+
             .timeline-list {
                 margin-top: 1rem;
             }
-            
+
             .timeline-item {
                 display: flex;
                 align-items: flex-start;
                 gap: 0.75rem;
                 margin-bottom: 1rem;
-                padding-bottom: 1rem;
-                border-bottom: 1px solid #dee2e6;
+                padding: 1rem;
+                background: white;
+                border-radius: 8px;
+                transition: transform 0.2s ease;
             }
-            
+
+            .timeline-item:hover {
+                transform: translateX(5px);
+            }
+
             .timeline-item:last-child {
-                border-bottom: none;
                 margin-bottom: 0;
-                padding-bottom: 0;
             }
-            
+
+            .timeline-icon {
+                font-size: 1rem;
+                flex-shrink: 0;
+            }
+
             .timeline-date {
                 font-size: 0.75rem;
-                color: #667eea;
+                color: #007bff;
                 font-weight: 600;
                 min-width: 70px;
-                background: white;
+                background: #f8f9fa;
                 padding: 0.25rem 0.5rem;
                 border-radius: 4px;
                 text-align: center;
+                flex-shrink: 0;
             }
-            
+
             .timeline-content {
                 font-size: 0.9rem;
                 line-height: 1.4;
                 color: #495057;
                 flex: 1;
+            }
+
+            .newsletter-widget {
+                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            }
+
+            .newsletter-form {
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+                margin-top: 1rem;
+            }
+
+            .newsletter-input {
+                padding: 0.75rem;
+                border: 1px solid #dee2e6;
+                border-radius: 6px;
+                font-size: 0.9rem;
+                transition: border-color 0.2s ease;
+            }
+
+            .newsletter-input:focus {
+                outline: none;
+                border-color: #007bff;
+            }
+
+            .newsletter-button {
+                padding: 0.75rem;
+                background: #007bff;
+                color: white;
+                border: none;
+                border-radius: 6px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.2s ease;
+            }
+
+            .newsletter-button:hover:not(:disabled) {
+                background: #0056b3;
+                transform: translateY(-1px);
+            }
+
+            .newsletter-button:disabled {
+                opacity: 0.7;
+                cursor: not-allowed;
+            }
+
+            .cta-widget {
+                background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+                color: white;
+                text-align: center;
+            }
+
+            .cta-widget .widget-title {
+                color: white;
+                border-bottom-color: rgba(255, 255, 255, 0.2);
+            }
+
+            .cta-widget p {
+                margin-bottom: 1.5rem;
+                opacity: 0.9;
+            }
+
+            .cta-button {
+                background: white;
+                color: #007bff;
+                padding: 0.75rem 1.5rem;
+                border-radius: 6px;
+                text-decoration: none;
+                font-weight: 600;
+                transition: all 0.3s ease;
+                display: inline-block;
+            }
+
+            .cta-button:hover {
+                background: #f8f9fa;
+                transform: translateY(-2px);
+            }
+
+            .pagination {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 0.5rem;
+                margin-top: 3rem;
+            }
+
+            @media (max-width: 992px) {
+                .articles-layout {
+                    grid-template-columns: 1fr;
+                    gap: 2rem;
+                }
+
+                .articles-sidebar {
+                    order: -1;
+                }
+
+                .section-header-with-filter {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 1rem;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .category-hero h1 {
+                    font-size: 2rem;
+                }
+
+                .featured-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .articles-grid {
+                    grid-template-columns: 1fr;
+                }
             }
         </style>
     </body>

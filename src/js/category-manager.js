@@ -1,4 +1,4 @@
-// CATEGORY MANAGER - Quản lý các trang category
+// CATEGORY MANAGER - Quản lý các trang category (Fixed version)
 class CategoryManager {
     constructor(categorySlug) {
         this.categorySlug = categorySlug;
@@ -15,7 +15,7 @@ class CategoryManager {
         // Kiểm tra và load dữ liệu
         this.loadCategoryData();
 
-        // Render các phần tử
+        // Render các phần tử (chỉ render nếu container tồn tại)
         this.renderFeaturedArticles();
         this.renderPopularPosts();
         this.renderAllArticles();
@@ -24,6 +24,7 @@ class CategoryManager {
         this.bindEvents();
 
         console.log("✅ Category Manager đã sẵn sàng!");
+        console.log(`📊 Tổng số bài viết: ${this.allPosts.length}`);
     }
 
     loadCategoryData() {
@@ -68,8 +69,10 @@ class CategoryManager {
                         isFeatured: false,
                         views: Math.floor(Math.random() * 500) + 50,
                         excerpt:
+                            post.excerpt ||
                             "Tóm tắt nội dung bài viết này. Đây là phần mô tả ngắn gọn về chủ đề chính của bài viết.",
                         description:
+                            post.description ||
                             "Mô tả chi tiết hơn về nội dung bài viết...",
                     });
                 });
@@ -83,6 +86,7 @@ class CategoryManager {
                         isFeatured: false,
                         views: Math.floor(Math.random() * 500) + 50,
                         excerpt:
+                            article.excerpt ||
                             "Tóm tắt nội dung bài viết này. Đây là phần mô tả ngắn gọn về chủ đề chính của bài viết.",
                     });
                 });
@@ -95,6 +99,12 @@ class CategoryManager {
         } else {
             console.warn(
                 `⚠️ Không tìm thấy dữ liệu cho category: ${this.categorySlug}`
+            );
+            console.log(
+                "🔍 Available blogData keys:",
+                typeof blogData !== "undefined"
+                    ? Object.keys(blogData)
+                    : "blogData is undefined"
             );
             // Tạo dữ liệu demo
             this.createDemoData();
@@ -140,7 +150,10 @@ class CategoryManager {
 
     renderFeaturedArticles() {
         const container = document.getElementById("featured-articles");
-        if (!container) return;
+        if (!container) {
+            console.log("ℹ️ Featured articles container not found - skipping");
+            return;
+        }
 
         const featuredPosts = this.allPosts
             .filter((post) => post.isFeatured)
@@ -185,11 +198,16 @@ class CategoryManager {
                 if (link) window.location.href = link;
             });
         });
+
+        console.log(`✅ Rendered ${featuredPosts.length} featured articles`);
     }
 
     renderPopularPosts() {
         const container = document.getElementById("popular-posts");
-        if (!container) return;
+        if (!container) {
+            console.log("ℹ️ Popular posts container not found - skipping");
+            return;
+        }
 
         // Lấy bài viết phổ biến (sắp xếp theo views)
         const popularPosts = [...this.allPosts]
@@ -221,6 +239,8 @@ class CategoryManager {
                 if (link) window.location.href = link;
             });
         });
+
+        console.log(`✅ Rendered ${popularPosts.length} popular posts`);
     }
 
     renderAllArticles() {
@@ -232,18 +252,26 @@ class CategoryManager {
     sortPosts() {
         switch (this.currentSort) {
             case "newest":
-                this.filteredPosts.sort(
-                    (a, b) =>
-                        new Date(b.date.split("/").reverse().join("-")) -
-                        new Date(a.date.split("/").reverse().join("-"))
-                );
+                this.filteredPosts.sort((a, b) => {
+                    const dateA = a.date
+                        ? a.date.split("/").reverse().join("-")
+                        : "2024/01/01";
+                    const dateB = b.date
+                        ? b.date.split("/").reverse().join("-")
+                        : "2024/01/01";
+                    return new Date(dateB) - new Date(dateA);
+                });
                 break;
             case "oldest":
-                this.filteredPosts.sort(
-                    (a, b) =>
-                        new Date(a.date.split("/").reverse().join("-")) -
-                        new Date(b.date.split("/").reverse().join("-"))
-                );
+                this.filteredPosts.sort((a, b) => {
+                    const dateA = a.date
+                        ? a.date.split("/").reverse().join("-")
+                        : "2024/01/01";
+                    const dateB = b.date
+                        ? b.date.split("/").reverse().join("-")
+                        : "2024/01/01";
+                    return new Date(dateA) - new Date(dateB);
+                });
                 break;
             case "popular":
                 this.filteredPosts.sort((a, b) => b.views - a.views);
@@ -253,11 +281,18 @@ class CategoryManager {
 
     renderArticlesGrid() {
         const container = document.getElementById("articles-list");
-        if (!container) return;
+        if (!container) {
+            console.error("❌ Articles container not found!");
+            return;
+        }
 
         const startIndex = (this.currentPage - 1) * this.postsPerPage;
         const endIndex = startIndex + this.postsPerPage;
         const postsToShow = this.filteredPosts.slice(startIndex, endIndex);
+
+        console.log(
+            `🔄 Rendering ${postsToShow.length} articles (page ${this.currentPage})`
+        );
 
         if (postsToShow.length === 0) {
             container.innerHTML =
@@ -294,11 +329,16 @@ class CategoryManager {
                 if (link) window.location.href = link;
             });
         });
+
+        console.log(`✅ Rendered ${postsToShow.length} articles successfully`);
     }
 
     renderPagination() {
         const container = document.getElementById("pagination");
-        if (!container) return;
+        if (!container) {
+            console.log("ℹ️ Pagination container not found - skipping");
+            return;
+        }
 
         const totalPages = Math.ceil(
             this.filteredPosts.length / this.postsPerPage
@@ -360,6 +400,7 @@ class CategoryManager {
         `;
 
         container.innerHTML = paginationHTML;
+        console.log(`✅ Rendered pagination (${totalPages} pages)`);
     }
 
     bindEvents() {
@@ -369,6 +410,7 @@ class CategoryManager {
             sortFilter.addEventListener("change", (e) => {
                 this.currentSort = e.target.value;
                 this.currentPage = 1;
+                console.log(`🔄 Sorting by: ${this.currentSort}`);
                 this.renderAllArticles();
             });
         }
@@ -387,18 +429,23 @@ class CategoryManager {
                     const page = parseInt(e.target.dataset.page);
                     if (page && page !== this.currentPage) {
                         this.currentPage = page;
+                        console.log(`📄 Switching to page: ${page}`);
                         this.renderAllArticles();
 
                         // Scroll to articles section
-                        document
-                            .querySelector(".articles-section")
-                            .scrollIntoView({
+                        const articlesSection =
+                            document.querySelector(".articles-section");
+                        if (articlesSection) {
+                            articlesSection.scrollIntoView({
                                 behavior: "smooth",
                             });
+                        }
                     }
                 }
             });
         }
+
+        console.log("✅ Events bound successfully");
     }
 
     // Public methods để thêm/sửa/xóa bài viết
@@ -510,15 +557,35 @@ class CategoryManager {
                 (sum, post) => sum + post.views,
                 0
             ),
-            averageViews: Math.round(
-                this.allPosts.reduce((sum, post) => sum + post.views, 0) /
-                    this.allPosts.length
-            ),
+            averageViews:
+                Math.round(
+                    this.allPosts.reduce((sum, post) => sum + post.views, 0) /
+                        this.allPosts.length
+                ) || 0,
             currentPage: this.currentPage,
             totalPages: Math.ceil(
                 this.filteredPosts.length / this.postsPerPage
             ),
         };
+    }
+
+    // Debug method
+    debug() {
+        console.log("🔍 CategoryManager Debug Info:");
+        console.log("- Category Slug:", this.categorySlug);
+        console.log("- Total Posts:", this.allPosts.length);
+        console.log("- Filtered Posts:", this.filteredPosts.length);
+        console.log("- Current Page:", this.currentPage);
+        console.log("- Current Sort:", this.currentSort);
+        console.log("- All Posts Sample:", this.allPosts.slice(0, 3));
+        console.log("- blogData available:", typeof blogData !== "undefined");
+        if (typeof blogData !== "undefined") {
+            console.log("- blogData keys:", Object.keys(blogData));
+            console.log(
+                "- Current category data:",
+                blogData[this.categorySlug]
+            );
+        }
     }
 }
 
@@ -547,6 +614,15 @@ window.categoryUtils = {
     // Generate random views
     randomViews: function (min = 50, max = 1000) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
+    },
+
+    // Debug helper
+    debugCategoryManager: function (categorySlug) {
+        if (window.categoryManagerInstance) {
+            window.categoryManagerInstance.debug();
+        } else {
+            console.log("No CategoryManager instance found. Create one first.");
+        }
     },
 };
 

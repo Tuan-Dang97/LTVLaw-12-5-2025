@@ -51,19 +51,22 @@ const blogData = {
         sectionId: "category-noi-bat",
         posts: [
             {
-                title: "Xin chào đây là bài viết 1",
+                title: "Bài viết 5",
                 image: "./image/thanh-lap-cong-ty-co-phan.jpg",
-                link: "/post/thanh-lap-cong-ty-tnhh",
+                link: "/post/dat-ten-cong-ty",
+                date: "09/05/2025",
             },
             {
-                title: "Bài viết 2",
+                title: "Bài viết 5",
                 image: "./image/thanh-lap-cong-ty-co-phan.jpg",
-                link: "/post/thanh-lap-cong-ty-tnhh",
+                link: "/post/dat-ten-cong-ty",
+                date: "09/05/2025",
             },
             {
-                title: "Bài viết 3",
+                title: "Bài viết 5",
                 image: "./image/thanh-lap-cong-ty-co-phan.jpg",
-                link: "/post/thay-doi-dia-chi-cong-ty",
+                link: "/post/dat-ten-cong-ty",
+                date: "09/05/2025",
             },
         ],
     },
