@@ -1893,7 +1893,7 @@ ul {
 .floating-buttons {
     position: fixed;
     right: 20px;
-    top: 50%;
+    top: 85%;
     transform: translateY(-50%);
     z-index: 1000;
     display: flex;
